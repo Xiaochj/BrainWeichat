@@ -5,10 +5,13 @@
   <string name="textview">android.widget.TextView</string>
   <string name="imageview">android.widget.ImageView</string>
   <string name="view">android.view.View</string>
+  <string name="edittext">android.widget.EditText</string>
 
   <string name="discover">发现</string>
   <string name="friend_circle">朋友圈</string>
   <string name="publish_circle_image_id">com.tencent.mm:id/gd</string>
   <string name="publish_alarm">从相册选择</string>
   <string name="picture_pick_id">com.tencent.mm:id/bnw</string>
+  <string name="publish_circle_text_id">com.tencent.mm:id/ddw</string>
+  <string name="publish_click">发表</string>
 </resources>
