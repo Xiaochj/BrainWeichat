@@ -20,13 +20,11 @@ public class OpenTruthUtils {
    */
   public static void inputAutoDelay(final AccessibilityService accessibilityService,
       final String id, final String text, final String clazz, final String inputContent,
-      final String publishId, final String publishText, final String publishClazz,
-      final int millis) {
+      final OnAfterInputAutoListener onAfterInputAutoListener, final int millis) {
     Handler handler = new Handler();
     handler.postDelayed(new Runnable() {
       @Override public void run() {
-        inputAuto(accessibilityService, id, text, clazz, inputContent, publishId, publishText,
-            publishClazz);
+        inputAuto(accessibilityService, id, text, clazz, inputContent, onAfterInputAutoListener);
       }
     }, millis);
   }
@@ -35,8 +33,7 @@ public class OpenTruthUtils {
    * 自动输入内容
    */
   public static void inputAuto(AccessibilityService accessibilityService, String id, String text,
-      String className, String inputContent, String publishId, String publishText,
-      String publishClazz) {
+      String className, String inputContent, OnAfterInputAutoListener onAfterInputAutoListener) {
     if (accessibilityService.getRootInActiveWindow() != null) {
       List<AccessibilityNodeInfo> nodeInfos = new ArrayList<>();
       if (id == null && !"".equals(text)) {
@@ -62,11 +59,8 @@ public class OpenTruthUtils {
             //粘贴进入内容
             nodeInfos.get(temp).performAction(AccessibilityNodeInfo.ACTION_PASTE);
 
-            /**
-             * 输入完内容，1s之后点击发表
-             */
-            openTheTruthDelay(accessibilityService, publishId, publishText, publishClazz,
-                AccessibilityNodeInfo.ACTION_CLICK, 1000);
+            onAfterInputAutoListener.onAfterInputEvent();
+
             break;
           }
           temp++;
@@ -126,5 +120,9 @@ public class OpenTruthUtils {
         openTheTruth(accessibilityService, id, text, clazz, action);
       }
     }, millis);
+  }
+
+  public interface OnAfterInputAutoListener {
+    void onAfterInputEvent();
   }
 }

@@ -45,7 +45,7 @@ public class BrainShotService extends AccessibilityService {
           isPublishCircleOpen = true;
         } else if (!isPublishTextOpen && isPublishCircleOpen) {
           //输入动态内容并发表
-          PublishText.getInstance(this).inputEditText(2000);
+          PublishText.getInstance(this).inputEditText(2000, 1000);
           isPublishTextOpen = true;
         } else if (!isBackCircleOpen && isPublishTextOpen) {
           //退出朋友圈
