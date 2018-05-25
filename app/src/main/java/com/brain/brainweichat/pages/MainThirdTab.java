@@ -32,13 +32,16 @@ public class MainThirdTab {
   /**
    * 点击朋友圈
    */
-  public void clickFriendCircleLine(int... millis) {
+  public void clickFriendCircleLine(
+      OpenTruthUtils.OnAfterOpenTheTruthListener onAfterOpenTheTruthListener, int... millis) {
     if (millis.length > 0) {
       OpenTruthUtils.openTheTruthDelay(abs, null, abs.getString(R.string.friend_circle),
-          abs.getString(R.string.textview), AccessibilityNodeInfo.ACTION_CLICK, millis[0]);
+          abs.getString(R.string.textview), AccessibilityNodeInfo.ACTION_CLICK,
+          onAfterOpenTheTruthListener, millis[0]);
     } else {
       OpenTruthUtils.openTheTruth(abs, null, abs.getString(R.string.friend_circle),
-          abs.getString(R.string.textview), AccessibilityNodeInfo.ACTION_CLICK);
+          abs.getString(R.string.textview), AccessibilityNodeInfo.ACTION_CLICK,
+          onAfterOpenTheTruthListener);
     }
   }
 }

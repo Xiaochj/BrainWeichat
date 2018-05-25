@@ -32,7 +32,7 @@ public class PublishText {
   /**
    * 发表文字状态
    */
-  public void inputEditText(final int... millis) {
+  public void inputEditText(final OpenTruthUtils.OnAfterOpenTheTruthListener onAfterOpenTheTruthListener,final int... millis) {
     if (millis.length == 2) {
       OpenTruthUtils.inputAutoDelay(abs, abs.getString(R.string.publish_circle_text_id), null,
           abs.getString(R.string.edittext), "test !!!",
@@ -42,7 +42,7 @@ public class PublishText {
                * 输入完内容，1s之后点击发表
                */
               OpenTruthUtils.openTheTruthDelay(abs, null, abs.getString(R.string.publish_click),
-                  abs.getString(R.string.textview), AccessibilityNodeInfo.ACTION_CLICK, millis[1]);
+                  abs.getString(R.string.textview), AccessibilityNodeInfo.ACTION_CLICK, onAfterOpenTheTruthListener,millis[1]);
             }
           }, millis[0]);
     } else if (millis.length == 1) {
@@ -54,7 +54,7 @@ public class PublishText {
                * 输入完内容，1s之后点击发表
                */
               OpenTruthUtils.openTheTruthDelay(abs, null, abs.getString(R.string.publish_click),
-                  abs.getString(R.string.textview), AccessibilityNodeInfo.ACTION_CLICK, millis[0]);
+                  abs.getString(R.string.textview), AccessibilityNodeInfo.ACTION_CLICK, onAfterOpenTheTruthListener,millis[0]);
             }
           });
     }

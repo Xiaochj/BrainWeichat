@@ -15,14 +15,14 @@ public class FriendCircle {
   private static FriendCircle instance = null;
   private AccessibilityService abs;
 
-  private FriendCircle(AccessibilityService abs){
+  private FriendCircle(AccessibilityService abs) {
     this.abs = abs;
   }
 
-  public static FriendCircle getInstance(AccessibilityService abs){
-    if(instance == null){
-      synchronized (FriendCircle.class){
-        if(instance == null){
+  public static FriendCircle getInstance(AccessibilityService abs) {
+    if (instance == null) {
+      synchronized (FriendCircle.class) {
+        if (instance == null) {
           instance = new FriendCircle(abs);
         }
       }
@@ -33,23 +33,29 @@ public class FriendCircle {
   /**
    * 发布状态
    */
-  public void clickPublishBtn(int ...millis){
-    if(millis.length > 0) {
+  public void clickPublishBtn(
+      OpenTruthUtils.OnAfterOpenTheTruthListener onAfterOpenTheTruthListener, int... millis) {
+    if (millis.length > 0) {
       OpenTruthUtils.openTheTruthDelay(abs, abs.getString(R.string.publish_circle_image_id), null,
-          abs.getString(R.string.imageview), AccessibilityNodeInfo.ACTION_LONG_CLICK, millis[0]);
-    }else {
+          abs.getString(R.string.imageview), AccessibilityNodeInfo.ACTION_LONG_CLICK,
+          onAfterOpenTheTruthListener, millis[0]);
+    } else {
       OpenTruthUtils.openTheTruth(abs, abs.getString(R.string.publish_circle_image_id), null,
-          abs.getString(R.string.imageview), AccessibilityNodeInfo.ACTION_LONG_CLICK);
+          abs.getString(R.string.imageview), AccessibilityNodeInfo.ACTION_LONG_CLICK,
+          onAfterOpenTheTruthListener);
     }
   }
 
-  public void clickBackBtn(int ...millis){
-    if(millis.length > 0) {
+  public void clickBackBtn(OpenTruthUtils.OnAfterOpenTheTruthListener onAfterOpenTheTruthListener,
+      int... millis) {
+    if (millis.length > 0) {
       OpenTruthUtils.openTheTruthDelay(abs, abs.getString(R.string.back_circle_id), null,
-          abs.getString(R.string.linearlayout), AccessibilityNodeInfo.ACTION_CLICK, millis[0]);
-    }else {
+          abs.getString(R.string.linearlayout), AccessibilityNodeInfo.ACTION_CLICK,
+          onAfterOpenTheTruthListener, millis[0]);
+    } else {
       OpenTruthUtils.openTheTruth(abs, abs.getString(R.string.back_circle_id), null,
-          abs.getString(R.string.linearlayout), AccessibilityNodeInfo.ACTION_CLICK);
+          abs.getString(R.string.linearlayout), AccessibilityNodeInfo.ACTION_CLICK,
+          onAfterOpenTheTruthListener);
     }
   }
 }
