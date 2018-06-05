@@ -24,6 +24,7 @@
   <string name="publish_circle_text_id">com.tencent.mm:id/ddw</string>
   <string name="publish_click">发表</string>
   <string name="back_circle_id">com.tencent.mm:id/i1</string>
+  <string name="commit_id">com.tencent.mm:id/dao</string>
 
   <!-- 我 -->
   <string name="setting">设置</string>

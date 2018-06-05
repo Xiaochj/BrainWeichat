@@ -17,6 +17,8 @@ public class BrainShotService extends AccessibilityService {
   private boolean isPublishTextOpen = false;
   private boolean isBackCircleOpen = false;
 
+  int i = 0;
+
   public BrainShotService() {
     super();
   }
@@ -58,7 +60,22 @@ public class BrainShotService extends AccessibilityService {
               isPublishTextOpen = true;
             }
           },2500, 1000);
-        } else if (!isBackCircleOpen && isPublishTextOpen) {
+        }
+        //else if(isPublishTextOpen && getRootInActiveWindow().getChild(0).getChild(0).getClassName()
+        //    .equals(getString(R.string.listview))){
+        //  FriendCircle.getInstance(this).scrollFriendCircleList(new OpenTruthUtils.OnAfterOpenTheTruthListener() {
+        //    @Override public void onAfterOpenEvent() {
+        //      Handler handler = new Handler();
+        //      handler.postDelayed(new Runnable() {
+        //        @Override public void run() {
+        //          Toast.makeText(getApplicationContext(),"hungrySword"+i,Toast.LENGTH_LONG).show();
+        //          i++;
+        //        }
+        //      },1000);
+        //    }
+        //  },3000);
+        //}
+        else if (!isBackCircleOpen && isPublishTextOpen) {
           //退出朋友圈
           FriendCircle.getInstance(this).clickBackBtn(new OpenTruthUtils.OnAfterOpenTheTruthListener() {
             @Override public void onAfterOpenEvent() {
